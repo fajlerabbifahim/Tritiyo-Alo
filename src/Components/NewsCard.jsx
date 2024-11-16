@@ -1,3 +1,5 @@
+import { LuShare2 } from "react-icons/lu";
+
 function NewsCard({ singleNews }) {
   const { author, title, rating, image_url, details, total_view } = singleNews;
 
@@ -17,15 +19,7 @@ function NewsCard({ singleNews }) {
           </div>
           <div className="ml-auto">
             <button className="text-gray-500 hover:text-gray-700">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 7a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 10c-2.67 0-8 1.34-8 4h16c0-2.66-5.33-4-8-4zM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
-              </svg>
+              <LuShare2 />
             </button>
           </div>
         </div>
