@@ -18,7 +18,7 @@ function HomeLayout() {
         <Navbar />
       </nav>
       <main className="w-11/12 mx-auto pt-8 gap-6 grid md:grid-cols-12 ">
-        <aside className="col-span-3">
+        <aside className="col-span-3 overflow-visible ">
           <LeftNav />
         </aside>
         <section className="col-span-6">
@@ -27,7 +27,7 @@ function HomeLayout() {
             <Outlet />
           </div>
         </section>
-        <aside className="col-span-3">
+        <aside className="col-span-3 overflow-visible">
           <RightNav />
         </aside>
       </main>

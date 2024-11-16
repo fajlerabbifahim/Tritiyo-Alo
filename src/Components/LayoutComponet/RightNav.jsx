@@ -3,7 +3,7 @@ import SocialLogin from "../SocialLogin";
 
 function RightNav() {
   return (
-    <div>
+    <div className="sticky top-5">
       <SocialLogin />
       <FindUs />
     </div>

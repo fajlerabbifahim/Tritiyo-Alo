@@ -1,7 +1,9 @@
 import { LuShare2 } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 function NewsCard({ singleNews }) {
-  const { author, title, rating, image_url, details, total_view } = singleNews;
+  const { author, title, rating, image_url, details, total_view, _id } =
+    singleNews;
 
   return (
     <div>
@@ -35,11 +37,14 @@ function NewsCard({ singleNews }) {
             />
           </div>
           <p className="text-gray-600 text-sm">
-            {details}
-            <span className="text-red-500 font-semibold cursor-pointer">
+            {details.slice(0, 150)}
+            <Link
+              to={`/news/${_id}`}
+              className="text-red-500 font-semibold cursor-pointer"
+            >
               {" "}
               Read More
-            </span>
+            </Link>
           </p>
         </div>
 

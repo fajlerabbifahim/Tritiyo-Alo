@@ -9,7 +9,7 @@ function LeftNav() {
       .then((data) => setCategory(data.data.news_category));
   }, []);
   return (
-    <div>
+    <div className="sticky top-5">
       <h1 className="font-semibold text-[20px]">
         All Category ({categories.length})
       </h1>

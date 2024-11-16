@@ -3,7 +3,6 @@ import NewsCard from "../Components/NewsCard";
 
 function CategoryNews() {
   const { data: news } = useLoaderData();
-  console.log(news);
 
   return (
     <div>
