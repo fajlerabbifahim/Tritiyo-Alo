@@ -1,18 +1,28 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 function Register() {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, updateUserProfile } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    setError("");
+
+    if (password.length < 6) {
+      return setError("Password Should be at Least 6 Characters");
+    }
+
     registerUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        e.target.reset();
+        updateUserProfile({ displayName: name }).then(() => {});
+        navigate("/");
       })
       .catch((e) => {
         console.log(e.message);
@@ -49,6 +59,7 @@ function Register() {
               required
             />
           </div>
+
           <div className="form-control">
             <label className="label">
               <span className="label-text">Password</span>
@@ -60,6 +71,11 @@ function Register() {
               className="input input-bordered"
               required
             />
+            {
+              <label className="text-red-600 font-medium text-sm">
+                {error}
+              </label>
+            }
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?

@@ -1,19 +1,23 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 function LoginFrom() {
   const { loginUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        e.target.reset();
+        navigate(location?.state ? location.state : "/");
       })
       .catch((e) => {
-        console.log(e.message);
+        setError("That’s an incorrect password. Try again.");
       });
   };
   return (
@@ -46,6 +50,11 @@ function LoginFrom() {
               className="input input-bordered"
               required
             />
+            {
+              <label className="font-medium text-red-600 text-sm">
+                {error}
+              </label>
+            }
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?

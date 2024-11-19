@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div className=" font-Poppins flex justify-between py-6 items-center">
-      <div>{user?.email}</div>
+      <div>{user?.displayName}</div>
       <div className="space-x-5 lg:ml-[95px]">
         <Link to="/">Home</Link>
         <Link to="/career">Career</Link>
